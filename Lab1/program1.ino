@@ -21,7 +21,7 @@ void loop()
   delay(250);
     
     }
-  for(int i=0;i<numleds;i++){
+  for(int i=numleds;i>=0;i++){
 
     digitalWrite(ledpins[i], HIGH);
   delay(250);
