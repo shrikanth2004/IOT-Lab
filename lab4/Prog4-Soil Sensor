@@ -1,0 +1,32 @@
+void setup() {
+  pinMode(A0, INPUT);
+  pinMode(8, OUTPUT);
+  pinMode(13, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int soilS = analogRead(A0);
+  Serial.println(soilS);
+
+  if (soilS <= 300) {
+    digitalWrite(13, LOW);
+    digitalWrite(8, LOW);
+    Serial.println("Soil is moist! No action needed.");
+  }
+  else if (soilS >= 800) {
+    digitalWrite(13, HIGH);
+    digitalWrite(8, HIGH);
+    Serial.println("Soil is dry! Watering required.");
+  }
+  else {
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(8, LOW);
+    Serial.println("Soil moisture is in the middle range.");
+  }
+
+  delay(1000);
+}
